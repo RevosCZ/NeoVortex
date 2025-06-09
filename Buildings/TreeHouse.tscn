@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4kkcjsq6rn36"]
+
+[ext_resource type="Texture2D" uid="uid://s4lqom3vtk12" path="res://Assets/Furnitures.png" id="1_7v882"]
+[ext_resource type="Script" uid="uid://crqppmsw8dk0q" path="res://Buildings/tree_house.gd" id="1_g00lv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d1q20"]
+size = Vector2(16, 26)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g00lv"]
+bg_color = Color(0, 0.703841, 0.544826, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0et42"]
+bg_color = Color(0.481812, 0.856484, 0, 1)
+
+[node name="TreeHouse" type="StaticBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_g00lv")
+
+[node name="House" type="Sprite2D" parent="."]
+position = Vector2(0, -18)
+scale = Vector2(0.3, 0.286)
+texture = ExtResource("1_7v882")
+hframes = 4
+vframes = 4
+frame = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -13)
+shape = SubResource("RectangleShape2D_d1q20")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -10.0
+offset_top = -37.0
+offset_right = 9.0
+offset_bottom = -33.0
+theme_override_styles/background = SubResource("StyleBoxFlat_g00lv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0et42")
+value = 50.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

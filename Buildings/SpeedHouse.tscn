@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0j7d2scw00w3"]
+
+[ext_resource type="Script" uid="uid://oi3fgknc1tnn" path="res://Buildings/SpeedHouse.gd" id="1_q321i"]
+[ext_resource type="Texture2D" uid="uid://s4lqom3vtk12" path="res://Assets/Furnitures.png" id="2_hk8f8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d1q20"]
+size = Vector2(32, 13)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g00lv"]
+bg_color = Color(0.615976, 0.196885, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0et42"]
+bg_color = Color(0.481812, 0.856484, 0, 1)
+
+[node name="SpeedHouse" type="StaticBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_q321i")
+
+[node name="House" type="Sprite2D" parent="."]
+position = Vector2(0.200001, -7)
+scale = Vector2(0.3, 0.286)
+texture = ExtResource("2_hk8f8")
+hframes = 4
+vframes = 8
+frame = 22
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.200001, -6.5)
+shape = SubResource("RectangleShape2D_d1q20")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -10.0
+offset_top = -19.0
+offset_right = 9.0
+offset_bottom = -15.0
+theme_override_styles/background = SubResource("StyleBoxFlat_g00lv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0et42")
+value = 50.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

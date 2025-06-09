@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://wdwpn4cqn4jf"]
+
+[ext_resource type="Script" uid="uid://bchtwvm5xsetd" path="res://Buildings/Altar.gd" id="1_u0ll7"]
+[ext_resource type="Texture2D" uid="uid://dk1pehloo0261" path="res://Assets/Altar.png" id="2_u0ll7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i7pmn"]
+size = Vector2(26, 66)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pb1ru"]
+bg_color = Color(0.6, 0.6, 0.6, 0.137255)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.318532, 0.607005, 0, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="Altar" type="StaticBody2D"]
+input_pickable = true
+script = ExtResource("1_u0ll7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -33)
+shape = SubResource("RectangleShape2D_i7pmn")
+
+[node name="Altar" type="Sprite2D" parent="."]
+position = Vector2(0, -37)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_u0ll7")
+
+[node name="Selected" type="Panel" parent="."]
+offset_left = -19.0
+offset_top = -73.0
+offset_right = 18.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_pb1ru")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
