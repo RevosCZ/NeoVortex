@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://co34xol87khk3"]
+
+[ext_resource type="Texture2D" uid="uid://mw8vyr3daixs" path="res://Assets/Cat-2-Sitting.png" id="1_cnrao"]
+[ext_resource type="Script" uid="uid://dyweeqxwrxa2v" path="res://Objects/boss.gd" id="1_tvv0h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s11cc"]
+size = Vector2(6, 5.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tvt08"]
+radius = 12.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ct3ho"]
+bg_color = Color(0.821911, 1.85303e-06, 7.70092e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0et42"]
+bg_color = Color(0.481812, 0.856484, 0, 1)
+
+[node name="Boss" type="StaticBody2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_tvv0h")
+
+[node name="Cat" type="Sprite2D" parent="."]
+position = Vector2(-2, -7)
+texture = ExtResource("1_cnrao")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2.75)
+shape = SubResource("RectangleShape2D_s11cc")
+
+[node name="KillArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillArea"]
+position = Vector2(0, -6.5)
+shape = SubResource("CircleShape2D_tvt08")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -9.5
+offset_top = -24.5
+offset_right = 9.5
+offset_bottom = -20.5
+theme_override_styles/background = SubResource("StyleBoxFlat_ct3ho")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0et42")
+value = 50.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="KillArea" to="." method="_on_kill_area_body_entered"]
+[connection signal="body_exited" from="KillArea" to="." method="_on_kill_area_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

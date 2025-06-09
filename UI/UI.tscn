@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://bu5t3cv6b3i3m"]
+
+[ext_resource type="Script" uid="uid://cw4fvdoyxp5w6" path="res://UI/UI.gd" id="1_6dd3c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6dd3c"]
+bg_color = Color(0.707967, 0.707967, 0.707966, 0.486275)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.288518, 0.288518, 0.288518, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_6dd3c")
+
+[node name="Panel" type="Panel" parent="."]
+theme_override_styles/panel = SubResource("StyleBoxFlat_6dd3c")
+
+[node name="Honor" type="Label" parent="."]
+offset_left = 2.0
+offset_right = 42.0
+offset_bottom = 23.0
+
+[node name="Treats" type="Label" parent="."]
+offset_left = 2.0
+offset_top = 22.0
+offset_right = 42.0
+offset_bottom = 45.0
+
+[node name="Zoomies" type="Label" parent="."]
+offset_left = 2.0
+offset_top = 44.0
+offset_right = 109.0
+offset_bottom = 67.0
+autowrap_mode = 3
+
+[node name="Controls" type="Label" parent="."]
+offset_left = 160.0
+offset_right = 200.0
+offset_bottom = 23.0
+
+[node name="Controls2" type="Label" parent="."]
+offset_left = 160.0
+offset_top = 18.0
+offset_right = 200.0
+offset_bottom = 41.0

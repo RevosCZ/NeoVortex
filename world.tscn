@@ -1,0 +1,130 @@
+[gd_scene load_steps=12 format=3 uid="uid://c8kjd3orjgtws"]
+
+[ext_resource type="Script" uid="uid://bu4fqjlmf74pb" path="res://world.gd" id="1_aqk2v"]
+[ext_resource type="Script" uid="uid://bfrsbma5qf07v" path="res://UI/camera.gd" id="1_f3sb7"]
+[ext_resource type="PackedScene" uid="uid://bu5t3cv6b3i3m" path="res://UI/UI.tscn" id="3_036b0"]
+[ext_resource type="PackedScene" uid="uid://co34xol87khk3" path="res://Objects/boss.tscn" id="4_aqk2v"]
+[ext_resource type="PackedScene" uid="uid://d2jv0k4n4fvkh" path="res://Units/character.tscn" id="5_pkg7o"]
+[ext_resource type="Texture2D" uid="uid://dg6jxlb2b8bvj" path="res://Assets/Background_space.png" id="6_dwbse"]
+[ext_resource type="Script" uid="uid://bpjubd54k60jn" path="res://Objects/objects.gd" id="6_wse8f"]
+[ext_resource type="PackedScene" uid="uid://cly76ynix484o" path="res://Objects/overlord.tscn" id="7_gbfbk"]
+[ext_resource type="PackedScene" uid="uid://buxlngyljyyo4" path="res://Buildings/CatBox.tscn" id="7_pkg7o"]
+[ext_resource type="PackedScene" uid="uid://b4kkcjsq6rn36" path="res://Buildings/TreeHouse.tscn" id="9_ioo17"]
+[ext_resource type="PackedScene" uid="uid://b0j7d2scw00w3" path="res://Buildings/SpeedHouse.tscn" id="11_ic0uy"]
+
+[node name="World" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_aqk2v")
+
+[node name="Background" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="TextureRect7" type="TextureRect" parent="Background"]
+offset_left = -1344.0
+offset_top = 832.0
+offset_right = 1344.0
+offset_bottom = 2496.0
+rotation = 3.14159
+texture = ExtResource("6_dwbse")
+
+[node name="TextureRect4" type="TextureRect" parent="Background"]
+offset_left = 4032.0
+offset_top = 832.0
+offset_right = 6720.0
+offset_bottom = 2496.0
+rotation = 3.14159
+texture = ExtResource("6_dwbse")
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+offset_left = -1343.0
+offset_top = -835.0
+offset_right = 1345.0
+offset_bottom = 829.0
+texture = ExtResource("6_dwbse")
+
+[node name="TextureRect2" type="TextureRect" parent="Background"]
+offset_left = 1344.0
+offset_top = -832.0
+offset_right = 4032.0
+offset_bottom = 831.0
+rotation = 3.14159
+texture = ExtResource("6_dwbse")
+
+[node name="TextureRect3" type="TextureRect" parent="Background"]
+offset_left = -4032.0
+offset_top = -2496.0
+offset_right = -1344.0
+offset_bottom = -832.0
+texture = ExtResource("6_dwbse")
+
+[node name="TextureRect5" type="TextureRect" parent="Background"]
+offset_left = 1344.0
+offset_top = 832.0
+offset_right = 4032.0
+offset_bottom = 2495.0
+texture = ExtResource("6_dwbse")
+
+[node name="TextureRect6" type="TextureRect" parent="Background"]
+offset_left = 1344.0
+offset_top = -2496.0
+offset_right = 4032.0
+offset_bottom = -832.0
+texture = ExtResource("6_dwbse")
+
+[node name="TextureRect8" type="TextureRect" parent="Background"]
+offset_left = 1344.0
+offset_top = 2496.0
+offset_right = 4032.0
+offset_bottom = 4160.0
+rotation = 3.14159
+texture = ExtResource("6_dwbse")
+
+[node name="TextureRect9" type="TextureRect" parent="Background"]
+offset_left = -4032.0
+offset_top = 832.0
+offset_right = -1344.0
+offset_bottom = 2495.0
+texture = ExtResource("6_dwbse")
+
+[node name="Camera" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+script = ExtResource("1_f3sb7")
+
+[node name="UI" parent="." instance=ExtResource("3_036b0")]
+
+[node name="Units" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Character" parent="Units" instance=ExtResource("5_pkg7o")]
+
+[node name="Objects" type="Node2D" parent="."]
+y_sort_enabled = true
+script = ExtResource("6_wse8f")
+
+[node name="Boss" parent="Objects" instance=ExtResource("4_aqk2v")]
+position = Vector2(100, 0)
+
+[node name="Boss2" parent="Objects" instance=ExtResource("4_aqk2v")]
+position = Vector2(-100, 0)
+
+[node name="Overlord" parent="Objects" instance=ExtResource("7_gbfbk")]
+position = Vector2(0, 300)
+
+[node name="Buildings" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="CatBox" parent="Buildings" instance=ExtResource("7_pkg7o")]
+position = Vector2(0, -100)
+
+[node name="Resources" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="TreeHouse" parent="Resources" instance=ExtResource("9_ioo17")]
+position = Vector2(-100, 100)
+
+[node name="Speed" type="Node2D" parent="."]
+
+[node name="SpeedHouse" parent="Speed" instance=ExtResource("11_ic0uy")]
+position = Vector2(100, 100)
+
+[node name="Altar" type="Node2D" parent="."]

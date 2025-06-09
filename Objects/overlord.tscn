@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=3 uid="uid://cly76ynix484o"]
+
+[ext_resource type="Script" uid="uid://bk6rttrwnxwgi" path="res://Objects/overlord.gd" id="1_bcuel"]
+[ext_resource type="Texture2D" uid="uid://c7ot6ydpkwt5c" path="res://Assets/evilcat.png" id="2_e3s1w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s11cc"]
+size = Vector2(15, 12.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tvt08"]
+radius = 44.0028
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ct3ho"]
+bg_color = Color(0.821911, 1.85303e-06, 7.70092e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bcuel"]
+bg_color = Color(0.4436, 0.9959, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e3s1w"]
+bg_color = Color(0.736069, 0.422319, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bcuel"]
+font_size = 8
+
+[node name="Overlord" type="StaticBody2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_bcuel")
+
+[node name="Cat" type="Sprite2D" parent="."]
+position = Vector2(0, -14)
+texture = ExtResource("2_e3s1w")
+hframes = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6.25)
+shape = SubResource("RectangleShape2D_s11cc")
+
+[node name="KillArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillArea"]
+position = Vector2(0, -6.5)
+shape = SubResource("CircleShape2D_tvt08")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -10.0
+offset_top = -36.0
+offset_right = 9.0
+offset_bottom = -32.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ct3ho")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bcuel")
+max_value = 10000.0
+value = 10000.0
+show_percentage = false
+
+[node name="ShieldProgressBar" type="ProgressBar" parent="."]
+offset_left = -10.0
+offset_top = -36.0
+offset_right = 9.0
+offset_bottom = -32.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_e3s1w")
+max_value = 10000.0
+value = 10000.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Label" type="Label" parent="."]
+offset_left = -31.0
+offset_top = 1.0
+offset_right = 32.0
+offset_bottom = 16.0
+text = "Overlord Cattus"
+label_settings = SubResource("LabelSettings_bcuel")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="KillArea" to="." method="_on_kill_area_body_entered"]
+[connection signal="body_exited" from="KillArea" to="." method="_on_kill_area_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

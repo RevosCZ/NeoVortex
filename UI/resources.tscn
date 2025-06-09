@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://dj4io702wkcus"]
+
+[ext_resource type="Texture2D" uid="uid://cuqxfb5vlabi0" path="res://Assets/RetroCatsFree.png" id="1_wdnrw"]
+
+[node name="Resources" type="Node2D"]
+
+[node name="Honor" type="Sprite2D" parent="."]
+position = Vector2(29, 39)
+texture = ExtResource("1_wdnrw")
+hframes = 4
+vframes = 6
+
+[node name="Treats" type="Sprite2D" parent="."]
+position = Vector2(25, 120)
+texture = ExtResource("1_wdnrw")
+hframes = 5
+vframes = 5
+frame = 19
