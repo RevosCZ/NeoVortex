@@ -1,19 +1,19 @@
 extends Node
 
-@onready var spawn = preload("res://Global/spawn_unit.tscn")
-@onready var altar = preload("res://Global/altarScrpt.tscn")
-@onready var intro = preload("res://Global/int.tscn")
-@onready var winnerCond = preload("res://Global/victory.tscn")
+@onready var spawn: PackedScene = preload("res://Global/spawn_unit.tscn")
+@onready var altar: PackedScene = preload("res://Global/altarScrpt.tscn")
+@onready var intro: PackedScene = preload("res://Global/int.tscn")
+@onready var winnerCond: PackedScene = preload("res://Global/victory.tscn")
 var is_spawn_unit_open: bool = false
 var is_altar_open: bool = false
 var is_introduction_open: bool = false
 var is_victory_open: bool = false
 var shield: bool = true
 
-var Honor = 0
-var Treats = 0
-var Zoomies = 0
-var Speed = 50
+var Honor: int = 0
+var Treats: int = 0
+var Zoomies: int = 0
+var Speed: int = 50
 
 func introduction(pos):
 	if is_introduction_open:

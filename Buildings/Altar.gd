@@ -1,8 +1,8 @@
 extends StaticBody2D
 
-var mouseEntered = false
-@onready var select = get_node("Selected")
-var Selected = false
+var mouseEntered: bool = false
+@onready var select: Panel = get_node("Selected")
+var Selected: bool = false
 
 func _process(delta: float) -> void:
 	select.visible = Selected

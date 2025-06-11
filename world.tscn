@@ -17,29 +17,13 @@ y_sort_enabled = true
 script = ExtResource("1_aqk2v")
 
 [node name="Background" type="Node2D" parent="."]
-y_sort_enabled = true
-
-[node name="TextureRect7" type="TextureRect" parent="Background"]
-offset_left = -1344.0
-offset_top = 832.0
-offset_right = 1344.0
-offset_bottom = 2496.0
-rotation = 3.14159
-texture = ExtResource("6_dwbse")
-
-[node name="TextureRect4" type="TextureRect" parent="Background"]
-offset_left = 4032.0
-offset_top = 832.0
-offset_right = 6720.0
-offset_bottom = 2496.0
-rotation = 3.14159
-texture = ExtResource("6_dwbse")
+z_index = -100
 
 [node name="TextureRect" type="TextureRect" parent="Background"]
-offset_left = -1343.0
+offset_left = -1344.0
 offset_top = -835.0
-offset_right = 1345.0
-offset_bottom = 829.0
+offset_right = 1344.0
+offset_bottom = 832.0
 texture = ExtResource("6_dwbse")
 
 [node name="TextureRect2" type="TextureRect" parent="Background"]
@@ -57,6 +41,14 @@ offset_right = -1344.0
 offset_bottom = -832.0
 texture = ExtResource("6_dwbse")
 
+[node name="TextureRect4" type="TextureRect" parent="Background"]
+offset_left = 4032.0
+offset_top = 832.0
+offset_right = 6720.0
+offset_bottom = 2496.0
+rotation = 3.14159
+texture = ExtResource("6_dwbse")
+
 [node name="TextureRect5" type="TextureRect" parent="Background"]
 offset_left = 1344.0
 offset_top = 832.0
@@ -66,12 +58,21 @@ texture = ExtResource("6_dwbse")
 
 [node name="TextureRect6" type="TextureRect" parent="Background"]
 offset_left = 1344.0
-offset_top = -2496.0
+offset_top = -2486.0
 offset_right = 4032.0
-offset_bottom = -832.0
+offset_bottom = -822.0
+texture = ExtResource("6_dwbse")
+
+[node name="TextureRect7" type="TextureRect" parent="Background"]
+offset_left = -1344.0
+offset_top = 832.0
+offset_right = 1344.0
+offset_bottom = 2496.0
+rotation = 3.14159
 texture = ExtResource("6_dwbse")
 
 [node name="TextureRect8" type="TextureRect" parent="Background"]
+y_sort_enabled = true
 offset_left = 1344.0
 offset_top = 2496.0
 offset_right = 4032.0
@@ -123,8 +124,10 @@ y_sort_enabled = true
 position = Vector2(-100, 100)
 
 [node name="Speed" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="SpeedHouse" parent="Speed" instance=ExtResource("11_ic0uy")]
 position = Vector2(100, 100)
 
 [node name="Altar" type="Node2D" parent="."]
+y_sort_enabled = true

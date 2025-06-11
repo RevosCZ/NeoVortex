@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var unit = preload("res://Units/character.tscn")
+@onready var unit: PackedScene = preload("res://Units/character.tscn")
 var housePos = Vector2(200,0)
 
 func _on_yes_pressed() -> void:
