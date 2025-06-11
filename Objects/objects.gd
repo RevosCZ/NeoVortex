@@ -3,43 +3,45 @@ extends Node2D
 enum { OBSTACLE, COLLECTABLE, RESOURCE }
 
 var tile_size: int = 16
-var house_size:int = 5
-var grid_size: Vector2i = Vector2i(200, 200)
-var grid: Array = []
+var house_size: int = 5
+var grid_size: Vector2i = Vector2i(1500, 1500)
+var grid: Dictionary = {}
 
 var boss: PackedScene = preload("res://Objects/boss.tscn")
 var treehouse: PackedScene = preload("res://Buildings/TreeHouse.tscn")
 var speedhouse: PackedScene = preload("res://Buildings/SpeedHouse.tscn")
 var altar: PackedScene = preload("res://Buildings/Altar.tscn")
 
-
 func _ready():
 	init_empty_grid()
-	init_trees()
-	
-
+	init_boss()
 
 func init_empty_grid() -> void:
-	for x: int in range(grid_size.x):
-		grid.append([])
-		for y: int in range(grid_size.y):
-			grid[x].append(null)
+	for x in range(-grid_size.x / 2, grid_size.x / 2):
+		grid[x] = {}
+		for y in range(-grid_size.y / 2, grid_size.y / 2):
+			grid[x][y] = null
 
+func init_boss() -> void:
+	var half_width: int = 120  # Total area
+	var boss_count: int = 250
+	var placed := 0
 
-func init_trees() -> void:
-	var positions: Array = []
-	for i: int in range(150):
-		var x_coor: int = randi() % int(grid_size.x) - 100
-		var y_coor: int = randi() % int(grid_size.y) - 100
-		var grid_position: Vector2i = Vector2i(x_coor, y_coor)
-		if not grid_position in positions:
-			positions.append(grid_position)
-	
-	for pos: Vector2i in positions:
-		var boss_instance: StaticBody2D = boss.instantiate()
-		boss_instance.set_position(tile_size * pos)
-		grid[pos.x][pos.y] = OBSTACLE
-		add_child(boss_instance)
+	while placed < boss_count:
+		var x := randi_range(-half_width, half_width)
+		var y := randi_range(-half_width, half_width)
+
+		# Avoid placing on exact center
+		if x == 0 and y == 0:
+			continue
+
+		# Ensure valid position and not already used
+		if grid.has(x) and grid[x].has(y) and grid[x][y] == null:
+			var boss_instance: StaticBody2D = boss.instantiate()
+			boss_instance.position = tile_size * Vector2(x, y)
+			grid[x][y] = OBSTACLE
+			add_child(boss_instance)
+			placed += 1
 
 
 func try_place_building(costs: Dictionary, scene: PackedScene, parent_node_path: NodePath):

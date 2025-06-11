@@ -1,7 +1,7 @@
 extends Node2D
 
-@onready var unit = preload("res://Units/character.tscn")
-var housePos = Vector2(200,0)
+@onready var unit: PackedScene = preload("res://Units/character.tscn")
+var housePos: Vector2 = Vector2(200,0)
 
 func _on_yes_pressed() -> void:
 	var unitPath = get_tree().get_root().get_node("World/Units")
