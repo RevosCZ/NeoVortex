@@ -92,6 +92,7 @@ texture = ExtResource("6_dwbse")
 stream = ExtResource("3_k3n1d")
 volume_db = -40.0
 autoplay = true
+parameters/looping = true
 
 [node name="Camera" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)

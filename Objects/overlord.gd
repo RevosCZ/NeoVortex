@@ -8,6 +8,7 @@ var unitsCount: int = 0
 @onready var bar: ProgressBar = $ProgressBar
 @onready var shieldBar: ProgressBar = $ShieldProgressBar
 @onready var timer: Timer = $Timer
+@onready var audio: AudioStreamPlayer = $AudioStreamPlayer
 
 
 func _ready():
@@ -17,7 +18,9 @@ func _ready():
 
 func _process(_delta):
 	if currentTime <= 0:
-		cat_defeated()
+		audio.play()
+		audio.connect("finished", Callable(self, "cat_defeated"))
+		set_process(false)
 
 	# Update shield bar to full if shield is active, else zero
 	if Game.shield:

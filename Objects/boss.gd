@@ -16,7 +16,10 @@ func _ready():
 
 func _process(_delta):
 	if currentTime <= 0:
-		cat_defeated()
+		audio.play()
+		audio.connect("finished", Callable(self, "cat_defeated"))
+		set_process(false)
+
 
 
 func _on_kill_area_body_entered(body):

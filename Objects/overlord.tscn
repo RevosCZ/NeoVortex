@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cly76ynix484o"]
+[gd_scene load_steps=10 format=3 uid="uid://cly76ynix484o"]
 
 [ext_resource type="Script" uid="uid://bk6rttrwnxwgi" path="res://Objects/overlord.gd" id="1_bcuel"]
 [ext_resource type="Texture2D" uid="uid://c7ot6ydpkwt5c" path="res://Assets/evilcat.png" id="2_e3s1w"]
+[ext_resource type="AudioStream" uid="uid://734ld0koyy84" path="res://Assets/meow2.mp3" id="3_e3s1w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s11cc"]
 size = Vector2(15, 12.5)
@@ -72,6 +73,10 @@ text = "Overlord Cattus"
 label_settings = SubResource("LabelSettings_bcuel")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_e3s1w")
+volume_db = -20.0
 
 [connection signal="body_entered" from="KillArea" to="." method="_on_kill_area_body_entered"]
 [connection signal="body_exited" from="KillArea" to="." method="_on_kill_area_body_exited"]
