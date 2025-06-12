@@ -7,7 +7,7 @@ var unitsCount: int = 0
 
 @onready var bar: ProgressBar = $ProgressBar
 @onready var timer: Timer = $Timer
-
+@onready var audio: AudioStreamPlayer = $AudioStreamPlayer
 
 func _ready():
 	currentTime = totalTime
@@ -35,6 +35,7 @@ func _on_kill_area_body_exited(body):
 func _on_timer_timeout():
 	var shopSeed = 1 * unitsCount
 	currentTime -= shopSeed
+	audio.play()
 	var tween = get_tree().create_tween()
 	tween.tween_property(bar, "value", currentTime, 0.5).set_trans(Tween.TRANS_LINEAR)
 

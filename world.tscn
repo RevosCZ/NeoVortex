@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://c8kjd3orjgtws"]
+[gd_scene load_steps=13 format=3 uid="uid://c8kjd3orjgtws"]
 
 [ext_resource type="Script" uid="uid://bu4fqjlmf74pb" path="res://world.gd" id="1_aqk2v"]
 [ext_resource type="Script" uid="uid://bfrsbma5qf07v" path="res://UI/camera.gd" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://bu5t3cv6b3i3m" path="res://UI/UI.tscn" id="3_036b0"]
+[ext_resource type="AudioStream" uid="uid://bjtmd1xdbnmqj" path="res://Assets/music.mp3" id="3_k3n1d"]
 [ext_resource type="PackedScene" uid="uid://co34xol87khk3" path="res://Objects/boss.tscn" id="4_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://d2jv0k4n4fvkh" path="res://Units/character.tscn" id="5_pkg7o"]
 [ext_resource type="Texture2D" uid="uid://dg6jxlb2b8bvj" path="res://Assets/Background_space.png" id="6_dwbse"]
@@ -86,6 +87,11 @@ offset_top = 832.0
 offset_right = -1344.0
 offset_bottom = 2495.0
 texture = ExtResource("6_dwbse")
+
+[node name="Music" type="AudioStreamPlayer" parent="Background"]
+stream = ExtResource("3_k3n1d")
+volume_db = -40.0
+autoplay = true
 
 [node name="Camera" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
