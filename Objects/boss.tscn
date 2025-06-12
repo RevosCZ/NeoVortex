@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://co34xol87khk3"]
+[gd_scene load_steps=8 format=3 uid="uid://co34xol87khk3"]
 
 [ext_resource type="Texture2D" uid="uid://mw8vyr3daixs" path="res://Assets/Cat-2-Sitting.png" id="1_cnrao"]
 [ext_resource type="Script" uid="uid://dyweeqxwrxa2v" path="res://Objects/boss.gd" id="1_tvv0h"]
+[ext_resource type="AudioStream" uid="uid://dy176nbgitlpu" path="res://Assets/meow.mp3" id="3_upsex"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s11cc"]
 size = Vector2(6, 5.5)
@@ -44,6 +45,10 @@ value = 50.0
 show_percentage = false
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_upsex")
+volume_db = -35.0
 
 [connection signal="body_entered" from="KillArea" to="." method="_on_kill_area_body_entered"]
 [connection signal="body_exited" from="KillArea" to="." method="_on_kill_area_body_exited"]
