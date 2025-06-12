@@ -23,26 +23,44 @@ func init_empty_grid() -> void:
 			grid[x][y] = null
 
 func init_boss() -> void:
-	var half_width: int = 120  # Total area
+	var half_width: int = 120  # Total spawn area from center
 	var boss_count: int = 250
+	var min_distance := 3  # Minimum tiles between bosses
 	var placed := 0
+	var placed_positions: Array = []
 
 	while placed < boss_count:
 		var x := randi_range(-half_width, half_width)
 		var y := randi_range(-half_width, half_width)
+		var try_pos := Vector2i(x, y)
 
 		# Avoid placing on exact center
 		if x == 0 and y == 0:
 			continue
 
-		# Ensure valid position and not already used
-		if grid.has(x) and grid[x].has(y) and grid[x][y] == null:
-			var boss_instance: StaticBody2D = boss.instantiate()
-			boss_instance.position = tile_size * Vector2(x, y)
-			grid[x][y] = OBSTACLE
-			add_child(boss_instance)
-			placed += 1
+		# Skip if position is occupied or invalid
+		if not (grid.has(x) and grid[x].has(y)):
+			continue
+		if grid[x][y] != null:
+			continue
 
+		# Check minimum distance to existing bosses
+		var too_close := false
+		for existing_pos in placed_positions:
+			if existing_pos.distance_to(try_pos) < min_distance:
+				too_close = true
+				break
+
+		if too_close:
+			continue
+
+		# Place boss
+		var boss_instance: StaticBody2D = boss.instantiate()
+		boss_instance.position = tile_size * Vector2(x, y)
+		grid[x][y] = OBSTACLE
+		add_child(boss_instance)
+		placed_positions.append(try_pos)
+		placed += 1
 
 func try_place_building(costs: Dictionary, scene: PackedScene, parent_node_path: NodePath):
 	# Check if player has enough of each resource
